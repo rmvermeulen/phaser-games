@@ -1,0 +1,2 @@
+#! /usr/bin/env sh
+yarn run parcel serve games/$1/game.html

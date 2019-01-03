@@ -16,7 +16,5 @@ window.onload = () => {
   });
   window.game = game;
 
-  game.scene.add(MainScene.key, MainScene);
-
-  game.scene.bringToTop(MainScene.key);
+  game.scene.add(MainScene.key, MainScene, true);
 };

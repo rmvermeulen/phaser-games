@@ -724,10 +724,9 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
-"@types/ramda@^0.25.45":
-  version "0.25.45"
-  resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.25.45.tgz#e13456709bb4f2c5fcbfa6dcac8240eff75fe816"
-  integrity sha512-J+xlbNyag7wgYRSuvRwu9zZY7t0vM4KMUVHxWLUMegqlz9+97v6jYo2JlvfsVC3qtulx7PKenFKzWCWsdVSCDw==
+"@types/ramda@types/npm-ramda#dist":
+  version "0.25.0"
+  resolved "https://codeload.github.com/types/npm-ramda/tar.gz/9529aa3c8ff70ff84afcbc0be83443c00f30ea90"
 
 "@types/semver@^5.5.0":
   version "5.5.0"
@@ -7363,6 +7362,11 @@ util@^0.10.3:
   integrity sha512-0Pm9hTQ3se5ll1XihRic3FDIku70C+iHUdT/W926rSgHV5QgXsYbKZN8MSC3tJtSkhuROzvsQjAaFENRXr+19A==
   dependencies:
     inherits "2.0.3"
+
+utility-types@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/utility-types/-/utility-types-3.2.0.tgz#e0ce64cc278768f0e3230a17e9c22228df099cc8"
+  integrity sha512-pg3spWUFl9NjKuJRfFXvPSBVBsMFGyDujf95HkRGxYa3JoD6bqabcL48FeWjbFdnumDLEh3Lr18U9P1IXL0yXA==
 
 utils-extend@^1.0.4, utils-extend@^1.0.6:
   version "1.0.8"

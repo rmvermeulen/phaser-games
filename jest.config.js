@@ -1,10 +1,10 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  setupTestFrameworkScriptFile: './setupJest.ts',
+  setupTestFrameworkScriptFile: 'jest-extended',
   verbose: true,
   collectCoverage: true,
-  coveragePathIgnorePatterns: ['setupJest'],
+  coveragePathIgnorePatterns: [],
   globals: {
     'ts-jest': {
       diagnostics: {

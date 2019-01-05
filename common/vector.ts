@@ -1,6 +1,7 @@
+// tslint:disable-next-line:variable-name
 export const Vec = (x: number, y: number) => new Vector(x, y);
+
 export class Vector {
-  constructor(public x = 0, public y = 0) {}
   static add(a: Partial<Vector>, b: Partial<Vector>) {
     return Vector.clone(a).add(b);
   }
@@ -12,6 +13,7 @@ export class Vector {
   static clone({ x = 0, y = 0 }: Partial<Vector>) {
     return new Vector(x, y);
   }
+  constructor(public x = 0, public y = 0) {}
 
   getLength() {
     return Math.sqrt(this.x * this.x + this.y * this.y);

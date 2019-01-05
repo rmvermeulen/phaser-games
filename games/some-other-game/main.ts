@@ -1,4 +1,5 @@
-import { Game, AUTO } from 'phaser';
+import { AUTO, Game } from 'phaser';
+
 import { MainScene } from './main.scene';
 
 declare const window: Window & { game?: Game };

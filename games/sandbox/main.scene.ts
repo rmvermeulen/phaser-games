@@ -1,7 +1,9 @@
 import { Scene } from 'phaser';
-import { apply, curry, evolve, props, repeat, flip, concat } from 'ramda';
-import { TextButton } from './text-button';
+import { apply, concat, curry, evolve, flip, props, repeat } from 'ramda';
+
 import { Vec, Vector } from '../../common/vector';
+
+import { TextButton } from './text-button';
 
 export class MainScene extends Scene {
   static readonly key = 'main-scenes';
@@ -37,10 +39,10 @@ export class MainScene extends Scene {
       3,
     )
       .map(
-        flipCall((n) =>
+        flipCall((index) =>
           evolve({
-            pos: curry(Vector.add)({ x: n * 100 }),
-            text: flip(concat)(' ' + n),
+            pos: curry(Vector.add)({ x: index * 100 }),
+            text: flip(concat)(' ' + index),
           }),
         ),
       )

@@ -1,7 +1,15 @@
 import { GameObjects, Scene } from 'phaser';
+
 import { Vector } from '../../common/vector';
 
 export class TextButton extends GameObjects.Text {
+  static sceneFactory(scene: Scene) {
+    return (pos: Vector, text: string, style: any, onClick: () => any) => {
+      const button = new TextButton(scene, pos, text, style, onClick);
+      scene.add.existing(button);
+      return button;
+    };
+  }
   private _color: string;
   private readonly _tint = 0xdddddd;
 
@@ -24,28 +32,20 @@ export class TextButton extends GameObjects.Text {
       .on('pointerout', () => this.onOut());
   }
 
-  static sceneFactory(scene: Scene) {
-    return (pos: Vector, text: string, style: any, onClick: () => any) => {
-      const button = new TextButton(scene, pos, text, style, onClick);
-      scene.add.existing(button);
-      return button;
-    };
-  }
-
-  public onOver() {
+  onOver() {
     // brighten
     this.setTint(0xffffff);
   }
-  public onOut() {
+  onOut() {
     this.resetTint();
     this.resetColor();
   }
 
-  public onDown() {
+  onDown() {
     this.setFill('yellow');
     this.onClick();
   }
-  public onUp() {
+  onUp() {
     this.resetColor();
   }
 

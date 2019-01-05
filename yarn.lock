@@ -6168,6 +6168,11 @@ quote-stream@^1.0.1, quote-stream@~1.0.2:
     minimist "^1.1.3"
     through2 "^2.0.0"
 
+ramda-adjunct@^2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/ramda-adjunct/-/ramda-adjunct-2.13.0.tgz#eed226631b29c58e5f07277dff2bed6139202cdb"
+  integrity sha512-X6KgtqhrP//qHD3YNxlzUjPgP6istv9H1IuQw+l3FK2qns+ZM6VuOdicKcOkfmGaHc4xQOx1XxWJUJnb+3KSzQ==
+
 ramda@^0.26.1:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"

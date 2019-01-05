@@ -48,27 +48,7 @@ export function createUfo(scene: Scene, pos: Vector) {
 
   const ufo = new Ufo(scene, pos);
 
-  //   const ufo = scene.physics.add.image(pos.x, pos.y, 'ufo');
-
   debug(ufo);
-
-  //   scene.input.keyboard.on('keydown', (e: KeyboardEvent) => {
-  //     debug(e);
-  //     switch (e.code) {
-  //       case 'ArrowLeft':
-  //         ufo.setX(ufo.x - 10);
-  //         break;
-  //       case 'ArrowRight':
-  //         ufo.setX(ufo.x + 10);
-  //         break;
-  //       case 'ArrowUp':
-  //         ufo.setY(ufo.y - 10);
-  //         break;
-  //       case 'ArrowDown':
-  //         ufo.setY(ufo.y + 10);
-  //         break;
-  //     }
-  //   });
 
   return ufo;
 }

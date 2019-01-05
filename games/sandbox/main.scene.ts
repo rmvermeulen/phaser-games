@@ -1,52 +1,51 @@
 import { Scene } from 'phaser';
-import { apply, concat, curry, evolve, flip, props, repeat } from 'ramda';
+import { apply, call, props } from 'ramda';
 
-import { Vec, Vector } from '../../common/vector';
+import { logger } from '../../common/logger';
+import { Vec } from '../../common/vector';
 
 import { TextButton } from './text-button';
+
+const debug = logger('menu');
 
 export class MainScene extends Scene {
   static readonly key = 'main-scenes';
 
   create() {
-    let n = 0;
-
-    const getText = () => `Clicked ${n} times`;
-    const banner = this.add.text(100, 150, getText());
-
-    const updateBanner = () => {
-      ++n;
-      banner.setText(getText());
-    };
-
-    const args = {
-      text: 'button',
-      style: { fill: 'green' },
-      cb: updateBanner,
-    };
-
-    const flipCall = <A, B, R>(fn: (b: B) => (a: A) => R) => (a: A, b: B) =>
-      fn(b)(a);
-
-    const factory = TextButton.sceneFactory(this);
-    const buttons = repeat(
-      {
-        pos: Vec(100, 100),
-        text: 'button',
-        style: { fill: 'green' },
-        cb: updateBanner,
-      },
-      3,
-    )
-      .map(
-        flipCall((index) =>
-          evolve({
-            pos: curry(Vector.add)({ x: index * 100 }),
-            text: flip(concat)(' ' + index),
-          }),
-        ),
-      )
-      .map(props(['pos', 'text', 'style', 'cb']))
-      .map(apply(factory));
+    createSimpleMenu(this, [
+      ['level 1', () => debug('going to level 1')],
+      ['level 2', () => debug('going to level 2')],
+      ['level 3', () => debug('going to level 3')],
+    ]);
   }
+}
+
+function createSimpleMenu(scene: Scene, bArgs: Array<[string, () => any]>) {
+  let n = 0;
+
+  const getText = () => `Clicked ${n} times`;
+  const banner = scene.add.text(50, 30, getText());
+
+  const updateBanner = () => {
+    ++n;
+    banner.setText(getText());
+  };
+
+  const args = {
+    text: 'button',
+    style: { fill: 'green' },
+    cb: updateBanner,
+  };
+
+  const factory = TextButton.sceneFactory(scene);
+
+  const buttons = bArgs
+    .map(([text, cb], index) => ({
+      pos: Vec(50, 100 + index * 50),
+      text,
+      style: { fill: 'green' },
+      cb: () => [cb, updateBanner].map(call),
+    }))
+    .map(props(['pos', 'text', 'style', 'cb']))
+    .map(apply(factory));
 }

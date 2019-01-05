@@ -1,5 +1,5 @@
 import { GameObjects, Scene } from 'phaser';
-import { Vector } from './vector';
+import { Vector } from '../../common/vector';
 
 export class TextButton extends GameObjects.Text {
   private _color: string;

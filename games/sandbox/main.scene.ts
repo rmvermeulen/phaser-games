@@ -1,10 +1,7 @@
 import { Scene } from 'phaser';
 import { apply, curry, evolve, props, repeat } from 'ramda';
 import { TextButton } from './text-button';
-import { Vec, Vector } from './vector';
-
-type Ret<T> = T extends (...args: any[]) => infer R ? R : never;
-type Args<T> = T extends (...args: infer U) => any ? U : never;
+import { Vec, Vector } from '../../common/vector';
 
 export class MainScene extends Scene {
   static readonly key = 'main-scenes';

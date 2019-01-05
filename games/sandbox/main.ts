@@ -20,6 +20,12 @@ window.onload = () => {
     height: 600,
     type: AUTO,
     parent: 'game',
+    physics: {
+      default: 'arcade',
+      arcade: {
+        debug: true,
+      },
+    },
   });
   window.game = game;
 

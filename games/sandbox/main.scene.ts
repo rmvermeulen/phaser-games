@@ -5,22 +5,35 @@ import { logger } from '../../common/logger';
 import { Vec } from '../../common/vector';
 
 import { TextButton } from './text-button';
+import { createUfo, Ufo } from './ufo';
 
 const debug = logger('menu');
 
 export class MainScene extends Scene {
-  static readonly key = 'main-scenes';
+  static readonly key = 'main-scene';
 
+  private ufo!: Ufo;
+  preload() {
+    this.load.image('ufo', 'textures/ufo.png');
+  }
   create() {
     createSimpleMenu(this, [
       ['level 1', () => debug('going to level 1')],
       ['level 2', () => debug('going to level 2')],
       ['level 3', () => debug('going to level 3')],
     ]);
+
+    this.ufo = createUfo(this, Vec(400, 100));
+  }
+
+  update(time: number, delta: number) {
+    super.update(time, delta);
+    this.ufo.update(time, delta);
   }
 }
 
 function createSimpleMenu(scene: Scene, bArgs: Array<[string, () => any]>) {
+  debug('create menu');
   let n = 0;
 
   const getText = () => `Clicked ${n} times`;

@@ -15,6 +15,7 @@ export class MainScene extends Scene {
   private ufo!: Ufo;
   preload() {
     this.load.image('ufo', 'textures/ufo.png');
+    this.load.image('flare', 'textures/flare.png');
   }
   create() {
     createSimpleMenu(this, [

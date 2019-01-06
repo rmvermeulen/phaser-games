@@ -1,13 +1,16 @@
-import { Actions, GameObjects, Input, Physics, Scene } from 'phaser';
-import { map, prop } from 'ramda';
+import { Input, Physics, Scene } from 'phaser';
 
 import { logger } from '../../common/logger';
-import { Vector } from '../../common/vector';
+import { Vec, Vector } from '../../common/vector';
+
+import { UfoAction, UfoBehaviour } from './ufo.behaviour';
 
 const debug = logger('ufo');
 
 export class Ufo extends Physics.Arcade.Image {
   private cursors: Input.Keyboard.CursorKeys;
+  private behaviour: UfoBehaviour;
+  private lastAction?: UfoAction;
   constructor(scene: Scene, { x, y }: Vector) {
     super(scene, x, y, 'ufo');
     scene.add.existing(this);
@@ -15,10 +18,43 @@ export class Ufo extends Physics.Arcade.Image {
     this.setCollideWorldBounds(true);
 
     this.cursors = scene.input.keyboard.createCursorKeys();
+
+    this.behaviour = new UfoBehaviour({
+      ufo: {
+        pos: Vec(x, y),
+        health: 100,
+      },
+    });
   }
 
   update(time: number, delta: number) {
     super.update(time, delta);
+
+    if (!this.lastAction || this.lastAction.isComplete(this)) {
+      const action = this.behaviour
+        .setState({
+          ufo: {
+            pos: Vec(this.x, this.y),
+          },
+        })
+        .decide();
+      this.lastAction = action;
+
+      if (action.move) {
+        const { move } = action;
+
+        const diff = move.clone().subtract(Vec(this.x, this.y));
+
+        const maxAcc = 100;
+        if (diff.length() > maxAcc) {
+          const scale = maxAcc / diff.length();
+          diff.scale(scale);
+        }
+
+        diff.scale(100);
+        this.setAcceleration(diff.x, diff.y);
+      }
+    }
 
     const { left, right, down, up } = this.cursors;
 

@@ -1,9 +1,11 @@
+import bluebird = require('bluebird');
 import { AUTO, Game } from 'phaser';
 
 import { logger } from '../../common/logger';
 
 import { MainScene } from './main.scene';
 
+global.Promise = bluebird;
 const debug = logger('main');
 
 declare const window: Window & { game?: Game };

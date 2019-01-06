@@ -4,7 +4,7 @@ module.exports = {
   setupTestFrameworkScriptFile: 'jest-extended',
   verbose: true,
   collectCoverage: true,
-  coveragePathIgnorePatterns: [],
+  coveragePathIgnorePatterns: ['\.json'],
   globals: {
     'ts-jest': {
       diagnostics: {

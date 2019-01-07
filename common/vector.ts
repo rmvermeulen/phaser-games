@@ -1,15 +1,8 @@
-/**
- * import the type info normally
- * but use require to load the js file separately for testing
- * and not the entire phaser library (uses canvas etc)
- */
-
 // tslint:disable:variable-name
-import { Math as _Math } from 'phaser';
-// tslint:disable-next-line:no-var-requires
-const PhMath: typeof _Math = require('phaser/src/math');
+import * as Phaser from 'phaser';
 
-export class Vector extends PhMath.Vector2 {}
+export const { Vector2: Vector } = Phaser.Math;
+export type Vector = Phaser.Math.Vector2;
 
 interface Point {
   x: number;
@@ -21,5 +14,4 @@ const VecV = ({ x, y }: Point) => new Vector(x, y);
 export const Vec: typeof VecXY & typeof VecV = (
   xOrV: number | Point,
   y?: number,
-) =>
-  typeof xOrV === 'number' ? new Vector(xOrV, y) : new Vector(xOrV.x, xOrV.y);
+) => (typeof xOrV === 'number' ? VecXY(xOrV, y!) : VecV(xOrV));

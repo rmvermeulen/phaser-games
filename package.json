@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "serve": "sh ./scripts/serve",
-    "lint": "tslint -p tsconfig.json -t stylish",
+    "lint": "tslint -p tsconfig.all.json -t stylish",
     "test": "jest"
   },
   "dependencies": {

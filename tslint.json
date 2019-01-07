@@ -17,5 +17,8 @@
     ],
     "interface-name": false,
     "max-classes-per-file": false
+  },
+  "linterOptions": {
+    "exclude": ["common/phaser.d.ts"]
   }
 }

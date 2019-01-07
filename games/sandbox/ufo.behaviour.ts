@@ -1,5 +1,4 @@
 import { assert } from 'chai';
-import { Scene } from 'phaser';
 
 import { logger } from '../../common/logger';
 import { Vec, Vector } from '../../common/vector';
@@ -138,8 +137,12 @@ export class UfoBehaviour extends Behaviour<State, UfoAction> {
 
       const newTarget = Vec(tx, ty);
 
-      if (bounds.checkSide && getDir(newTarget) === lastDir) {
-        debug('invariant broken');
+      if (bounds.checkSide) {
+        assert.equal(
+          getDir(newTarget),
+          lastDir,
+          'Position generated outside allowed bounds',
+        );
         continue;
       }
 
@@ -156,9 +159,10 @@ export class UfoBehaviour extends Behaviour<State, UfoAction> {
     const isCloseTo = (value: Vector) => ({ x, y }: Ufo) => {
       const dist = value.distance(Vec(x, y));
       // if distance is now bigger, we've passed it!
-      if (dist > prevDist) {
+      if (dist < 1 || dist > prevDist) {
         return true;
       }
+
       prevDist = dist;
       return false;
     };

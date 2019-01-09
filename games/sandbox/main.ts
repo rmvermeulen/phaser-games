@@ -5,10 +5,10 @@ import { logger } from '../../common/logger';
 
 import { MainScene } from './main.scene';
 
-global.Promise = bluebird;
-const debug = logger('main');
-
+(window as any).Promise = bluebird;
 declare const window: Window & { game?: Game };
+
+const debug = logger('main');
 
 if (window.game) {
   window.location.reload();

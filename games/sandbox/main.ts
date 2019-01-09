@@ -21,7 +21,7 @@ window.onload = () => {
     width: 800,
     height: 600,
     type: AUTO,
-    parent: 'game',
+    canvas: document.getElementById('game') as any,
     physics: {
       default: 'arcade',
       arcade: {

@@ -1,7 +1,7 @@
 import { assert } from 'chai';
 
-import { logger } from '../../common/logger';
-import { Vec, Vector } from '../../common/vector';
+import { logger } from '../../../common/logger';
+import { Vec, Vector } from '../../../common/vector';
 
 import { Behaviour } from './behaviour';
 import { Ufo } from './ufo';
@@ -138,11 +138,7 @@ export class UfoBehaviour extends Behaviour<State, UfoAction> {
       const newTarget = Vec(tx, ty);
 
       if (bounds.checkSide) {
-        assert.equal(
-          getDir(newTarget),
-          lastDir,
-          'Position generated outside allowed bounds',
-        );
+        assert.equal(TargetDir[getDir(newTarget)], TargetDir[lastDir]);
         continue;
       }
 

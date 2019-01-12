@@ -1,7 +1,8 @@
+import { assert } from 'chai';
 import { Input, Physics, Scene } from 'phaser';
 
-import { logger } from '../../common/logger';
-import { Vec, Vector } from '../../common/vector';
+import { logger } from '../../../common/logger';
+import { Vec, Vector } from '../../../common/vector';
 
 import { UfoAction, UfoBehaviour } from './ufo.behaviour';
 
@@ -14,6 +15,7 @@ export class Ufo extends Physics.Arcade.Image {
   constructor(scene: Scene, { x, y }: Vector) {
     super(scene, x, y, 'ufo');
     scene.add.existing(this);
+
     scene.physics.add.existing(this);
     this.setCollideWorldBounds(true);
 

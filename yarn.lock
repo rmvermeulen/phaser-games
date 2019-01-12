@@ -7247,6 +7247,13 @@ through2@^2.0.0, through2@~2.0.3:
     readable-stream "~2.3.6"
     xtend "~4.0.1"
 
+tiled-parser@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/tiled-parser/-/tiled-parser-0.1.2.tgz#26c63b79742aae63213cfdf1ab366c3b2b3364f6"
+  integrity sha512-s0E2ihke0BFxRH6BWxNrK18VFbRlnZEymeyJHM46LKelfJ9/qsszdnHN/9xA0xo4lKt7VxhiBZ57+zliLHl3Ig==
+  dependencies:
+    lodash "^4.17.10"
+
 timers-browserify@^2.0.4:
   version "2.0.10"
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.10.tgz#1d28e3d2aadf1d5a5996c4e9f95601cd053480ae"
